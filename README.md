@@ -1,6 +1,6 @@
 # visual-rabbit-hole
 
-a claude code skill that explains any concept like you're talking to a curious friend with a whiteboard.
+an agent skill that explains any concept like you're talking to a curious friend with a whiteboard.
 
 analogies that actually hit. ascii diagrams. the gotcha everyone misses. and a rabbit hole of "wait, what's *that*?" to keep you going.
 
@@ -12,13 +12,7 @@ works for anything — physics, philosophy, finance, code, whatever you're tryin
 npx skills add albertbethlowsky/visual-rabbit-hole
 ```
 
-or manually:
-
-```bash
-git clone https://github.com/albertbethlowsky/visual-rabbit-hole.git ~/.claude/skills/visual-rabbit-hole
-```
-
-either way, claude code picks it up automatically.
+works with claude code, cursor, codex, opencode, and [40+ other agents](https://github.com/vercel-labs/skills#available-agents).
 
 ## use
 
