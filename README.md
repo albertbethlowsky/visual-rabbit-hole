@@ -29,4 +29,4 @@ it searches the web when it needs real-world examples or current info.
 
 PRs are open. you're welcome to contribute.
 
-but be real with yourself before you open one — if it changes core ideas or isn't well thought through, it's getting closed. think it through, make it sharp, then submit.
+but be real with yourself before you open one: if it changes core ideas or isn't well thought through, it's getting closed. think it through, make it sharp, then submit.
