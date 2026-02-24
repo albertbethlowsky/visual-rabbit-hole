@@ -44,8 +44,19 @@ Use box-drawing characters (`┌─┐│└─┘├┤`), arrows (`→ ← ↑
 ### 3. The Gotcha
 Highlight the most common misconception or counterintuitive truth. Frame it as "Most people think X, but actually Y" or "The #1 mistake is...". This cements understanding by addressing what trips people up.
 
-### 4. The Rabbit Hole
-Suggest 3-5 related concepts to explore next, ordered from most accessible to deepest. Each item: **bold name** + one-line description of why it's interesting. These should form a natural learning path — each concept building on the previous one.
+### 4. The Rabbit Hole — "Branches on the knowledge tree"
+Knowledge is a tree. Every concept is a branch that splits into deeper branches, and — here's the magic — connects sideways to branches from completely different trees.
+
+Structure the rabbit hole in two parts:
+
+**Go Deeper** (2-3 items) — concepts that go further down this branch, from accessible to advanced. Each item: **bold name** + one-line hook explaining why it's interesting.
+
+**Surprising Connections** (1-2 items) — concepts from *a completely different field* that share the same underlying structure, pattern, or insight. This is where minds get blown. Examples:
+- Recursion in CS ↔ self-similar fractals in nature ↔ infinite regress in philosophy
+- Supply/demand in economics ↔ equilibrium in chemistry ↔ predator-prey cycles in ecology
+- Gradient descent in ML ↔ evolution by natural selection ↔ how water finds the lowest point
+
+Always explain *why* the connection exists, not just that it exists.
 
 ## When to Search the Web
 

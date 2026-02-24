@@ -51,12 +51,16 @@ Notice: it goes all the way down first, *then* all the way back up. Two phases, 
 
 The #1 mistake: **forgetting the base case**. Without "if there's no doll inside, stop" — your process never ends. In code, that's a stack overflow. Every recursive function needs its "smallest doll."
 
-### Go Deeper (The Rabbit Hole)
+### The Rabbit Hole
 
+**Go Deeper:**
 - **The call stack** — What physically happens in memory during those two phases (unfold/fold back)
 - **Tail recursion** — A trick where the "fold back" phase disappears entirely, making recursion as fast as a loop
-- **Divide and conquer** — The algorithm family that makes recursion powerful: split the problem, solve each half the same way (mergesort, quicksort)
-- **Memoization** — What if you keep opening the same box twice? Cache the answer. This leads into dynamic programming.
+- **Divide and conquer** — Split the problem, solve each half the same way. This is how mergesort and quicksort work — and why they're so elegant.
+
+**Surprising Connections:**
+- **Fractals in nature** — Romanesco broccoli, coastlines, blood vessels — nature uses the same trick: one rule applied at every scale. Recursion isn't just a coding pattern, it's a structure the universe keeps reusing.
+- **Infinite regress in philosophy** — "Who created the creator?" is a recursion without a base case. Philosophers have debated this for millennia — turns out it's the same bug programmers hit.
 
 ---
 
@@ -108,12 +112,16 @@ But wait — where does the extra money come from?
 
 You'd think inflation is always bad. But here's the twist: moderate inflation (~2%) is considered *healthy*. It nudges people to spend and invest instead of hoarding cash. **Deflation** — falling prices — sounds great until you realize everyone stops buying ("it'll be cheaper tomorrow"), businesses earn less, lay off workers, and the economy spirals. The real enemy isn't rising prices — it's *unpredictable* prices.
 
-### Go Deeper (The Rabbit Hole)
+### The Rabbit Hole
 
-- **The Phillips Curve** — The famous (and debated) tradeoff: can you have low inflation *and* low unemployment at the same time?
-- **Hyperinflation** — What happens when inflation breaks loose entirely (Zimbabwe printed $100 trillion bills)
+**Go Deeper:**
 - **Central bank interest rates** — The main lever used to fight inflation, and the elegant logic behind why raising rates cools things down
+- **Hyperinflation** — What happens when inflation breaks loose entirely (Zimbabwe printed $100 trillion bills)
 - **Real vs nominal values** — How to stop being fooled by big numbers and think about what money can actually *buy*
+
+**Surprising Connections:**
+- **Equilibrium in chemistry** — Le Chatelier's principle says: disturb a system at equilibrium and it pushes back to restore balance. Central banks do the exact same thing. Economics and chemistry are both studying systems that self-correct — with the same math.
+- **Tragedy of the commons in ecology** — Everyone acting rationally (spending more before prices rise) makes the collective outcome worse (prices rise faster). Same structure as overfishing, climate change, and antibiotic resistance.
 
 ---
 
