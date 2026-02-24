@@ -8,47 +8,55 @@ These examples demonstrate the style, depth, and structure expected from visual-
 
 **Response**:
 
+### The Setup
+
+Here's a problem: you have a pile of nested boxes, and somewhere in the smallest box is a key. You don't know how deep it goes. How do you find it?
+
+You could try to plan ahead — but you don't know the depth. So what if you just said: "open the box. If there's another box inside, do the same thing. If there's a key, stop."
+
+That's it. That's recursion. **You just described a process that uses itself as its own instruction manual.**
+
 ### The Analogy: Russian Nesting Dolls
 
-Imagine you have a Russian nesting doll (matryoshka). To find the smallest doll, you:
+Think of a matryoshka doll. To find the smallest one:
 1. Open the current doll
 2. If there's a doll inside, repeat from step 1
-3. If there's no doll inside — you found the smallest one. Done!
+3. If there's no doll inside — you found it. Done.
 
-That's recursion: **a process that calls itself with a smaller version of the same problem until it hits a stopping point (the base case).**
+The beautiful part? You didn't need different instructions for each layer. **One rule handled all of them.**
 
-### The Diagram
+### The Diagram — Watch it unfold and fold back
 
 ```
-findSmallest(🪆🪆🪆🪆)
-  │
-  ├─ "Is there a doll inside?" → Yes
-  │   └─ findSmallest(🪆🪆🪆)
-  │       │
-  │       ├─ "Is there a doll inside?" → Yes
-  │       │   └─ findSmallest(🪆🪆)
-  │       │       │
-  │       │       ├─ "Is there a doll inside?" → Yes
-  │       │       │   └─ findSmallest(🪆)
-  │       │       │       │
-  │       │       │       └─ "Is there a doll inside?" → No!
-  │       │       │           BASE CASE → return 🪆
-  │       │       │
-  │       │       └─ returns 🪆
-  │       └─ returns 🪆
-  └─ returns 🪆
+UNFOLDING (going deeper)              FOLDING BACK (returning)
+
+findSmallest(🪆🪆🪆🪆)                 findSmallest(🪆🪆🪆🪆)
+  │                                      ▲
+  ▼ open it                              │ returns 🪆
+findSmallest(🪆🪆🪆)                   findSmallest(🪆🪆🪆)
+  │                                      ▲
+  ▼ open it                              │ returns 🪆
+findSmallest(🪆🪆)                     findSmallest(🪆🪆)
+  │                                      ▲
+  ▼ open it                              │ returns 🪆
+findSmallest(🪆)                       findSmallest(🪆)
+  │                                      │
+  └─ nothing inside!                     └─ BASE CASE: return 🪆
+     STOP HERE ─────────────────────────────►
 ```
+
+Notice: it goes all the way down first, *then* all the way back up. Two phases, one rule.
 
 ### The Gotcha
 
-The #1 mistake: **forgetting the base case**. Without a stopping condition, your nesting dolls go on forever — in code, that's a stack overflow.
+The #1 mistake: **forgetting the base case**. Without "if there's no doll inside, stop" — your process never ends. In code, that's a stack overflow. Every recursive function needs its "smallest doll."
 
 ### Go Deeper (The Rabbit Hole)
 
-- **Tail recursion** — Why some languages optimize recursive calls to run as fast as loops
-- **The call stack** — What physically happens in memory when functions call themselves
-- **Divide and conquer** — The algorithm family that makes recursion powerful (mergesort, quicksort)
-- **Memoization** — How to avoid re-solving the same sub-problems (leads into dynamic programming)
+- **The call stack** — What physically happens in memory during those two phases (unfold/fold back)
+- **Tail recursion** — A trick where the "fold back" phase disappears entirely, making recursion as fast as a loop
+- **Divide and conquer** — The algorithm family that makes recursion powerful: split the problem, solve each half the same way (mergesort, quicksort)
+- **Memoization** — What if you keep opening the same box twice? Cache the answer. This leads into dynamic programming.
 
 ---
 
@@ -58,52 +66,54 @@ The #1 mistake: **forgetting the base case**. Without a stopping condition, your
 
 **Response**:
 
-### The Analogy: Musical Chairs with Money
+### The Setup
 
-Imagine 10 people at an auction with $100 each, bidding on 10 pizzas. Pizzas sell for ~$100.
+Here's something weird: a cup of coffee cost $0.25 in 1970. Now it's $5. The coffee didn't get 20x better. So what happened to the money?
 
-Now give everyone $200 instead. Same 10 pizzas, but double the money chasing them. Pizzas sell for ~$200. **Nothing real changed — there's no more pizza — but the price doubled because there's more money competing for the same stuff.**
+### The Analogy: An Auction with Too Much Cash
 
-That's inflation at its core: **too much money chasing too few goods.**
+Imagine 10 people at an auction, each with $100, bidding on 10 pizzas. Pizzas sell for ~$100.
 
-### The Diagram
+Now the auctioneer hands everyone an extra $100. Same 10 pizzas. But now everyone's waving $200 around. What happens?
+
+Pizzas sell for ~$200. **Nothing real changed — no extra pizza was created — but every dollar became worth less because there are more of them competing for the same stuff.**
+
+### The Diagram — Before and After
 
 ```
-NORMAL STATE                    INFLATION
-┌─────────────────┐            ┌─────────────────┐
-│  💰💰💰          │            │  💰💰💰💰💰💰    │
-│  Money supply    │            │  More money!     │
-│                  │            │                  │
-│  🍕🍕🍕          │            │  🍕🍕🍕          │
-│  Same goods      │            │  Same goods      │
-│                  │            │                  │
-│  Price: $10/🍕   │            │  Price: $20/🍕   │
-└─────────────────┘            └─────────────────┘
+BEFORE                              AFTER
+┌─────────────────┐                ┌─────────────────┐
+│  💰💰💰          │                │  💰💰💰💰💰💰    │
+│  Money supply    │                │  More money!     │
+│                  │       ──►      │                  │
+│  🍕🍕🍕          │                │  🍕🍕🍕          │
+│  Same goods      │                │  Same goods      │
+│                  │                │                  │
+│  Price: $10/🍕   │                │  Price: $20/🍕   │
+└─────────────────┘                └─────────────────┘
 
-        The Three Main Causes:
+But wait — where does the extra money come from?
 
-  Demand-Pull          Cost-Push          Money Supply
-  ──────────          ──────────         ────────────
-  People want         It costs more      Government
-  more stuff    →     to make stuff  →   prints more
-  than exists         (oil, wages)       money
+  Demand-Pull          Cost-Push          Money Printing
+  ──────────          ──────────         ──────────────
+  People suddenly     It costs more      Central bank
+  want more stuff     to make stuff      creates more
+  than exists         (oil, wages)       currency
 
-  "Too many           "Costs go up,      "More dollars
-   dollars             prices             chasing same
-   chasing             follow"            goods"
-   too few goods"
+  "Everyone wants     "Costs go up,      "More dollars,
+   the same pizza"     pizza follows"     same pizza"
 ```
 
 ### The Gotcha
 
-People think inflation is always bad. Moderate inflation (~2%) is actually considered healthy — it encourages spending and investment. **Deflation** (falling prices) is often worse: people delay purchases ("it'll be cheaper tomorrow"), businesses earn less, lay off workers, spiral downward.
+You'd think inflation is always bad. But here's the twist: moderate inflation (~2%) is considered *healthy*. It nudges people to spend and invest instead of hoarding cash. **Deflation** — falling prices — sounds great until you realize everyone stops buying ("it'll be cheaper tomorrow"), businesses earn less, lay off workers, and the economy spirals. The real enemy isn't rising prices — it's *unpredictable* prices.
 
 ### Go Deeper (The Rabbit Hole)
 
-- **The Phillips Curve** — The debated tradeoff between inflation and unemployment
-- **Hyperinflation** — What happens when inflation spirals out of control (Weimar Germany, Zimbabwe)
-- **Central bank interest rates** — The main tool used to fight inflation, and why raising rates works
-- **Real vs nominal values** — How to think about money's actual purchasing power over time
+- **The Phillips Curve** — The famous (and debated) tradeoff: can you have low inflation *and* low unemployment at the same time?
+- **Hyperinflation** — What happens when inflation breaks loose entirely (Zimbabwe printed $100 trillion bills)
+- **Central bank interest rates** — The main lever used to fight inflation, and the elegant logic behind why raising rates cools things down
+- **Real vs nominal values** — How to stop being fooled by big numbers and think about what money can actually *buy*
 
 ---
 
@@ -111,4 +121,4 @@ People think inflation is always bad. Moderate inflation (~2%) is actually consi
 
 **User**: Explain how mRNA vaccines work
 
-(In this case, use WebSearch to find a recent, clear source to ground the explanation with accurate, current details. Then structure the response the same way — analogy, diagram, gotcha, rabbit hole.)
+(In this case, use WebSearch to find a recent, clear source to ground the explanation with accurate, current details. Then structure the response the same way — setup, analogy, diagram, gotcha, rabbit hole.)
