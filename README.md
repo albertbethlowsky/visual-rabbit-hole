@@ -9,10 +9,16 @@ works for anything — physics, philosophy, finance, code, whatever you're tryin
 ## install
 
 ```bash
+npx skills add albertbethlowsky/visual-rabbit-hole
+```
+
+or manually:
+
+```bash
 git clone https://github.com/albertbethlowsky/visual-rabbit-hole.git ~/.claude/skills/visual-rabbit-hole
 ```
 
-that's it. claude code picks it up automatically.
+either way, claude code picks it up automatically.
 
 ## use
 
